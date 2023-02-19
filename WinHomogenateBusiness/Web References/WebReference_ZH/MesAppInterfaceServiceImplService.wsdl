@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://impl.service.webservices.mes/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="MesAppInterfaceServiceImplService" targetNamespace="http://impl.service.webservices.mes/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://impl.service.webservices.mes/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="appInterface" type="tns:appInterface" />
+      <xs:element name="appInterfaceResponse" type="tns:appInterfaceResponse" />
+      <xs:complexType name="appInterface">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="type" type="xs:string" />
+          <xs:element minOccurs="0" name="input" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="appInterfaceResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="output" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="appInterface">
+    <wsdl:part name="parameters" element="tns:appInterface" />
+  </wsdl:message>
+  <wsdl:message name="appInterfaceResponse">
+    <wsdl:part name="parameters" element="tns:appInterfaceResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MesAppInterfaceServiceImpl">
+    <wsdl:operation name="appInterface">
+      <wsdl:input name="appInterface" message="tns:appInterface" />
+      <wsdl:output name="appInterfaceResponse" message="tns:appInterfaceResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MesAppInterfaceServiceImplServiceSoapBinding" type="tns:MesAppInterfaceServiceImpl">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="appInterface">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="appInterface">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="appInterfaceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MesAppInterfaceServiceImplService">
+    <wsdl:port name="MesAppInterfaceServiceImplPort" binding="tns:MesAppInterfaceServiceImplServiceSoapBinding">
+      <soap:address location="http://10.125.1.122:8080/calb_mes/ws/mesAppInterfaceWcf" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
