@@ -11,6 +11,7 @@ namespace Model
         public string UserID { get; set; }
         public string UserName { get; set; }
         public int UserGrade { get; set; }
+        public string a { get; set; }
     }
     public class plc
     {
